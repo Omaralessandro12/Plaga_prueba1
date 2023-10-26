@@ -7,13 +7,13 @@ model_path = "weights/best.pt"
 
 # Setting page layout
 st.set_page_config(
-    page_title="Object Detection using YOLOv8",  # Setting page title
+    page_title="Detección de objetos usando YOLOv8",  # Setting page title
     page_icon="🤖",     # Setting page icon
     layout="wide",      # Setting layout to wide
     initial_sidebar_state="expanded"    # Expanding sidebar by default
 )
 
-# Creating sidebar
+# Creando Barra lateral 
 with st.sidebar:
     st.header("Image/Video Config")     # Adding header to sidebar
     # Adding file uploader to sidebar for selecting videos
@@ -26,7 +26,7 @@ with st.sidebar:
         "Select Model Confidence", 25, 100, 40)) / 100
 
 # Creating main page heading
-st.title("Object Detection using YOLOv8")
+st.title("Deteccion de Plagas con YOLOv8")
 
 try:
     model = YOLO(model_path)
