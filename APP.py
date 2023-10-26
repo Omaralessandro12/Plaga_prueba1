@@ -77,13 +77,13 @@ if source_radio == settings.IMAGE:
                 st.image(res_plotted, caption='Detected Image',
                          use_column_width=True)
                 try:
-                    with st.expander("Detection Results"):
+                    with st.expander("Resultados de la detección"):
                         for box in boxes:
                 # Se puede obtener informacion de data para dezplegar info de la plaga 
                             st.write(box.data)
                 except Exception as ex:
                     # st.write(ex)
-                    st.write("No image is uploaded yet!")
+                    st.write("Aún no se ha subido ninguna imagen")
                 # quitar el video y youtube para despuer realizar 
 # elif source_radio == settings.VIDEO:
 #    helper.play_stored_video(confidence, model)
