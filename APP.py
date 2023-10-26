@@ -85,14 +85,14 @@ if source_radio == settings.IMAGE:
                     # st.write(ex)
                     st.write("No image is uploaded yet!")
                 # quitar el video y youtube para despuer realizar 
-elif source_radio == settings.VIDEO:
-    helper.play_stored_video(confidence, model)
+# elif source_radio == settings.VIDEO:
+#    helper.play_stored_video(confidence, model)
 
 elif source_radio == settings.WEBCAM:
     helper.play_webcam(confidence, model)
 
-elif source_radio == settings.YOUTUBE:
-    helper.play_youtube_video(confidence, model)
+# elif source_radio == settings.YOUTUBE:
+#    helper.play_youtube_video(confidence, model)
 
 else:
-    st.error("Please select a valid source type!")
+    st.error("Seleccione un tipo de fuente válido")
