@@ -22,38 +22,38 @@ st.set_page_config(
 # st.caption('Updload a photo with this :blue[hand signals]: :+1:, :hand:, :i_love_you_hand_sign:, and :spock-hand:.')
 # st.caption('Then click the :blue[Detect Objects] button and check the result.')
 
-# Sidebar
-st.sidebar.header("ML Model Config")
+# barra Desplazadora
+st.sidebar.header("Configracion del Modelo")
 
 # Model Options
 model_type = st.sidebar.radio(
     "Select Task", ['Detection', 'Segmentation'])
 
 confidence = float(st.sidebar.slider(
-    "Select Model Confidence", 25, 100, 40)) / 100
+    "Seleccione la Confianza del Modelo", 25, 100, 40)) / 100
 
-# Selecting Detection Or Segmentation
-if model_type == 'Detection':
+# Seleccionar Deteccion 
+if model_type == 'Deteccion':
     model_path = Path(settings.DETECTION_MODEL)
-elif model_type == 'Segmentation':
-    model_path = Path(settings.SEGMENTATION_MODEL)
+# elif model_type == 'Segmentation':
+#   model_path = Path(settings.SEGMENTATION_MODEL)
 
-# Load Pre-trained ML Model
+# Cargar el modelo de aprendizaje entrenado
 try:
     model = helper.load_model(model_path)
 except Exception as ex:
-    st.error(f"Unable to load model. Check the specified path: {model_path}")
+    st.error(f"No se puede cargar el modelo. Verifique la ruta especificada: {model_path}")
     st.error(ex)
 
 st.sidebar.header("Image/Video Config")
 source_radio = st.sidebar.radio(
-    "Select Source", settings.SOURCES_LIST)
+    "Selecione fuente", settings.SOURCES_LIST)
 
 source_img = None
-# If image is selected
+# Seleccion de Imagen
 if source_radio == settings.IMAGE:
     source_img = st.sidebar.file_uploader(
-        "Choose an image...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
+        "Seleccione Imagen...", type=("jpg", "jpeg", "png", 'bmp', 'webp'))
 
     col1, col2 = st.columns(2)
 
@@ -64,11 +64,11 @@ if source_radio == settings.IMAGE:
                 st.image(source_img, caption="Uploaded Image",
                          use_column_width=True)
         except Exception as ex:
-            st.error("Error occurred while opening the image.")
+            st.error("Se produjo un error al abrir la carpeta")
             st.error(ex)
 
     with col2:        
-            if st.sidebar.button('Detect Objects'):
+            if st.sidebar.button('Detectar objetos'):
                 res = model.predict(uploaded_image,
                                     conf=confidence
                                     )
@@ -79,11 +79,12 @@ if source_radio == settings.IMAGE:
                 try:
                     with st.expander("Detection Results"):
                         for box in boxes:
+                # Se puede obtener informacion de data para dezplegar info de la plaga 
                             st.write(box.data)
                 except Exception as ex:
                     # st.write(ex)
                     st.write("No image is uploaded yet!")
-
+                # quitar el video y youtube para despuer realizar 
 elif source_radio == settings.VIDEO:
     helper.play_stored_video(confidence, model)
 
