@@ -27,7 +27,7 @@ st.sidebar.header("Configracion del Modelo")
 
 # Model Options
 model_type = st.sidebar.radio(
-    "Select Task", ['Detection', 'Segmentation'])
+    "Seleccionar Tarea", ['Detection', 'Segmentation'])
 
 confidence = float(st.sidebar.slider(
     "Seleccione la Confianza del Modelo", 25, 100, 40)) / 100
