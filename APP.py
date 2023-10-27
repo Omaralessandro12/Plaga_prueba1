@@ -42,7 +42,7 @@ if model_type == 'Deteccion':
 try:
     model = helper.load_model(model_path)
 except Exception as ex:
-    st.error(f"No se puede cargar el modelo. Verifique la ruta especificada: {model_path}")
+    st.error(f"Unable to load model. Check the specified path: {model_path}")
     st.error(ex)
 
 st.sidebar.header("Image/Video Config")
