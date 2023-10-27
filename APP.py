@@ -35,8 +35,8 @@ confidence = float(st.sidebar.slider(
 # Seleccionar Deteccion 
 if model_type == 'Deteccion':
     model_path = Path(settings.DETECTION_MODEL)
-# elif model_type == 'Segmentation':
-#   model_path = Path(settings.SEGMENTATION_MODEL)
+elif model_type == 'Segmentation':
+   model_path = Path(settings.SEGMENTATION_MODEL)
 
 # Cargar el modelo de aprendizaje entrenado
 try:
